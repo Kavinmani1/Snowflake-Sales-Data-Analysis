@@ -1,0 +1,49 @@
+SELECT * FROM SALES_DATA_NEW LIMIT 10;
+SELECT COUNT(*) AS total_records
+FROM SALES_DATA_NEW;
+
+DESCRIBE TABLE SALES_DATA_NEW;
+
+//count by region
+SELECT Region, COUNT(*) AS RecordCount
+FROM SALES_DATA_NEW
+GROUP BY Region;
+
+//Total profit by country
+SELECT Country, SUM(Total_Profit) AS TotalProfit
+FROM SALES_DATA_NEW
+GROUP BY Country;
+
+
+//total count by Sales_Channel
+SELECT Sales_Channel, COUNT(*) AS Frequency
+FROM SALES_DATA_NEW
+GROUP BY Sales_Channel
+ORDER BY Frequency DESC
+LIMIT 50;
+
+// Analysing avg of Unit price and cost
+SELECT AVG(Unit_Price) AS AvgUnitPrice, AVG(Unit_Cost) AS AvgUnitCost
+FROM SALES_DATA_NEW;
+
+
+// Analysing sales Statistics
+SELECT
+  MIN(Order_Date) AS Min_Order_Date,
+  MAX(Order_Date) AS Max_Order_Date,
+  AVG(Units_Sold) AS Avg_Units_Sold,
+  SUM(Total_Revenue) AS Total_Revenue
+FROM SALES_DATA_NEW;
+
+// Sales data by Region
+SELECT Region, SUM(Total_Revenue) AS Total_Revenue, SUM(Total_Profit) AS Total_Profit
+FROM SALES_DATA_NEW
+GROUP BY Region;
+
+//Top selling items
+SELECT Item_Type, SUM(Units_Sold) AS Total_Units_Sold
+FROM SALES_DATA_NEW
+GROUP BY Item_Type
+ORDER BY Total_Units_Sold DESC
+LIMIT 5;
+
